@@ -1,0 +1,52 @@
+https://dbpedia.org/sparql/
+--------------------------------------------------------------------------------
+tous les hôtels en Algérie:
+  SELECT *
+  WHERE {
+    ?hotel a dbo:Hotel;
+        rdfs:label ?nomHotel;
+        dbo:location ?ville.
+    ?ville a dbo:Place;
+        rdfs:label ?nomVille.
+    FILTER (STR(?nomVille) = "Algeria")
+  }
+--------------------------------------------------------------------------------
+tous les hôtels à Alger ou à Istamboul:
+  SELECT *
+  WHERE {
+    ?hotel a dbo:Hotel;
+        rdfs:label ?nomHotel;
+        dbo:location ?ville.
+    ?ville a dbo:Place;
+        rdfs:label ?nomVille.
+    FILTER (STR(?nomVille) = "Alger" || STR(?nomVille) = "Istanbul")
+  }
+---------------------------------------------------------------------------------
+tous les hôtels dans une ville où se trouve le pont du Rialto:
+
+---------------------------------------------------------------------------------
+tous les hôtels en Algérie triés par nombre de chambres par ordre décroissant:
+  SELECT ?hotel ?nomHotel?numChambre
+  WHERE {
+      ?hotel a dbo:Hotel;
+        rdfs:label ?nomHotel;
+        dbo:location ?ville.
+    ?hotel dbo:location dbr:Algeria ;
+    dbo:numberOfRooms ?numChambre.
+  }
+  ORDER BY DESC(?numChambre)
+---------------------------------------------------------------------------------
+les résumés allemands ou italiens de Alger:
+  SELECT ?resumes
+  WHERE {
+    VALUES ?lang { "de" "it" } 
+    dbr:Algiers dbo:abstract ?resumes.
+    FILTER (lang(?resumes) = ?lang)
+  }
+----------------------------------------------------------------------------------
+les hôtels dont les URI contiennent «Alger»:
+SELECT ?hotel
+WHERE {
+  ?hotel a dbo:Hotel .
+  FILTER (REGEX(STR(?hotel), "Alger", "i"))
+}

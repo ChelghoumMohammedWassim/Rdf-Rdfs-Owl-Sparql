@@ -1,0 +1,34 @@
+@prefix EX: <http://www.labged.net#> .
+
+<http://lsirwww.epfl.ch/courses/dis/2005ws/exercises/rdf/www/schema.txt#E1>
+  a <http://www.labged.net#Enseignement> ;
+  EX:prenom "TAREK" ;
+  EX:nomFamille "KHADIR" ;
+  EX:titre "T1" ;
+  EX:grade "Professeur" ;
+  EX:dateRecrutement "2017-01-13" .
+
+<http://lsirwww.epfl.ch/courses/dis/2005ws/exercises/rdf/www/schema.txt#E2>
+  a EX:Enseignement ;
+  EX:prenom "NADIR" ;
+  EX:nomFamille "FARAH" ;
+  EX:titre "T2" ;
+  EX:grade "Professeur" ;
+  EX:dateRecrutement "2017-01-28" ;
+  EX:dateDepart "2020-01-30" .
+
+<http://lsirwww.epfl.ch/courses/dis/2005ws/exercises/rdf/www/schema.txt#E3>
+  a EX:Enseignement ;
+  EX:prenom "NADIRA" ;
+  EX:nomFamille "AZIZI" ;
+  EX:titre "T3" ;
+  EX:grade "Professeur" ;
+  EX:dateRecrutement "2017-02-13" .
+
+<http://lsirwww.epfl.ch/courses/dis/2005ws/exercises/rdf/www/schema.txt#E4>
+  a ns0:Enseignement ;
+  ns0:prenom "SERIDI" ;
+  ns0:nomFamille "HASSINA" ;
+  ns0:titre "T4" ;
+  ns0:grade "Professeur" ;
+  ns0:dateRecrutement "2017-03-10" .

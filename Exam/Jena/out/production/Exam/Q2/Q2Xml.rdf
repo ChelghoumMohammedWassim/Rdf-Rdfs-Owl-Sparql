@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rdf:RDF 
+xml:base="http://lsirwww.epfl.ch/courses/dis/2005ws/exercises/rdf/www/schema.txt" 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:EX="http://www.labged.net#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+<EX:Enseignement rdf:ID="E1">
+    <EX:prenom>TAREK</EX:prenom>
+    <EX:nomFamille>KHADIR</EX:nomFamille>
+    <EX:titre>T1</EX:titre>
+    <EX:grade>Professeur</EX:grade>
+    <EX:dateRecrutement>2017-01-13</EX:dateRecrutement>
+</EX:Enseignement>
+
+<EX:Enseignement rdf:ID="E2">
+    <EX:prenom>NADIR</EX:prenom>
+    <EX:nomFamille>FARAH</EX:nomFamille>
+    <EX:titre>T2</EX:titre>
+    <EX:grade>Professeur</EX:grade>
+    <EX:dateRecrutement>2017-01-28</EX:dateRecrutement>
+    <EX:dateDepart>2020-01-30</EX:dateDepart>
+</EX:Enseignement>
+
+<EX:Enseignement rdf:ID="E3">
+    <EX:prenom>NADIRA</EX:prenom>
+    <EX:nomFamille>AZIZI</EX:nomFamille>
+    <EX:titre>T3</EX:titre>
+    <EX:grade>Professeur</EX:grade>
+    <EX:dateRecrutement>2017-02-13</EX:dateRecrutement>
+</EX:Enseignement>
+
+<EX:Enseignement rdf:ID="E4">
+    <EX:prenom>HASSINA</EX:prenom>
+    <EX:nomFamille>SERIDI</EX:nomFamille>
+    <EX:titre>T4</EX:titre>
+    <EX:grade>Professeur</EX:grade>
+    <EX:dateRecrutement>2017-03-10</EX:dateRecrutement>
+</EX:Enseignement>
+
+</rdf:RDF>
+<!-- 
+Les enseignants qui ont le nom de famille ‘Benmohamed’:
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX EX: <http://www.labged.net#>
+SELECT ?prenom ?nom ?titre ?grade ?dateRec ?dateDep
+WHERE {
+  ?Enseignement EX:prenom ?prenom.
+  ?Enseignement EX:nomFamille "BENMOHAMED".
+  ?Enseignement EX:nomFamille ?nom.
+  ?Enseignement EX:titre ?titre.
+  ?Enseignement EX:grade ?grade.
+  ?Enseignement EX:dateRecrutement ?dateRec.
+  OPTIONAL{?Enseignement EX:dateDepart ?dateDep}
+}
+_____________________________________________________________________________________________________________
+Les prénoms et date de recrutement des enseignants qui ont le nom de famille ‘Benmohamed’.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX EX: <http://www.labged.net#>
+SELECT ?prenom ?dateRec 
+WHERE {
+  ?Enseignement EX:prenom ?prenom.
+  ?Enseignement EX:nomFamille "AZIZI".
+  ?Enseignement EX:dateRecrutement ?dateRec.
+}
+______________________________________________________________________________________________________________
+les prénoms des employés embauchés avant le 2017-03-01.
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX EX: <http://www.labged.net#>
+SELECT ?Prenom  ?DateRecrutement
+WHERE {
+  ?Enseignement EX:prenom ?Prenom.
+  ?Enseignement EX:dateRecrutement ?DateRecrutement.
+  FILTER(?DateRecrutement<"2017-03-01")
+}
+
+
+-->

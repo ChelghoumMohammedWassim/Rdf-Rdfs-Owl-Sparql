@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<rdf:RDF 
+xml:base="http://lsirwww.epfl.ch/courses/dis/2005ws/exercises/rdf/www/schema.txt" 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:EX="http://www.labged.net#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+<rdf:Description rdf:ID="Personne">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Property rdf:ID="nom">
+    <rdfs:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#string"/>
+    <rdfs:domain rdf:resource="#Personne"/>
+</rdf:Property>
+
+<rdf:Description rdf:ID="Enseignement">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="#Personne"/>
+</rdf:Description>
+
+<rdf:Description rdf:ID="Etudient">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="#Personne"/>
+</rdf:Description>
+
+<rdf:Property rdf:ID="sexe">
+    <rdfs:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#string"/>
+    <rdfs:domain rdf:resource="#Etudient"/>
+</rdf:Property>
+
+<rdf:Description rdf:ID="Encadrement">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Property rdf:ID="encadreur">
+    <rdfs:domain rdf:resource="#Encadrement"/>
+    <rdfs:range rdf:resource="#Enseignement"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="co-encadreur">
+    <rdfs:domain rdf:resource="#Encadrement"/>
+    <rdfs:range rdf:resource="#Enseignement"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="etudient">
+    <rdfs:domain rdf:resource="#Encadrement"/>
+    <rdfs:range rdf:resource="#Etudient"/>
+</rdf:Property>
+
+<rdf:Description rdf:ID="Travaille">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+</rdf:Description>
+
+<rdf:Property rdf:ID="etu">
+    <rdfs:domain rdf:resource="#Travaille"/>
+    <rdfs:range rdf:resource="#Etudient"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="enseignement">
+    <rdfs:domain rdf:resource="#Travaille"/>
+    <rdfs:range rdf:resource="#Enseignement"/>
+</rdf:Property>
+
+<rdf:Property rdf:ID="lieu">
+    <rdfs:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#string"/>
+    <rdfs:domain rdf:resource="#Travaille"/>
+</rdf:Property>
+
+<EX:Etudient rdf:ID="HiBA">
+    <EX:nom>Hiba</EX:nom>
+    <EX:sexe>fille</EX:sexe>
+</EX:Etudient>
+
+<EX:Etudient rdf:ID="LAYEB">
+    <EX:nom>Layeb</EX:nom>
+    <EX:sexe>garçon</EX:sexe>
+</EX:Etudient>
+
+<EX:Etudient rdf:ID="NAWEL">
+    <EX:nom>Nawel</EX:nom>
+    <EX:sexe>fille</EX:sexe>
+</EX:Etudient>
+
+<EX:Etudient rdf:ID="RYMA">
+    <EX:nom>Ryma</EX:nom>
+    <EX:sexe>fille</EX:sexe>
+</EX:Etudient>
+
+<EX:Enseignement rdf:ID="SERIDI">
+    <EX:nom>Seridi</EX:nom>
+</EX:Enseignement>
+
+<EX:Enseignement rdf:ID="KHADIR">
+    <EX:nom>Khadir</EX:nom>
+</EX:Enseignement>
+
+<EX:Enseignement rdf:ID="FARAH">
+    <EX:nom>Farah</EX:nom>
+</EX:Enseignement>
+
+<EX:Enseignement rdf:ID="AZIZI">
+    <EX:nom>Azizi</EX:nom>
+</EX:Enseignement>
+
+<EX:Encadrement>
+    <EX:encadreur rdf:resource="#FARAH"/>
+    <EX:co-encadreur rdf:resource="#KHADIR"/>
+    <EX:etudient rdf:resource="#HiBA"/>
+    <EX:etudient rdf:resource="#LAYEB"/>
+</EX:Encadrement>
+
+<EX:Encadrement>
+    <EX:encadreur rdf:resource="#AZIZI"/>
+    <EX:co-encadreur rdf:resource="#KHADIR"/>
+    <EX:etudient rdf:resource="#NAWEL"/>
+</EX:Encadrement>
+
+<EX:Encadrement>
+    <EX:encadreur rdf:resource="#AZIZI"/>
+    <EX:co-encadreur rdf:resource="#SERIDI"/>
+    <EX:etudient rdf:resource="#NAWEL"/>
+</EX:Encadrement>
+
+<EX:Travaille>
+    <EX:etu>
+        <rdf:Description rdf:about="#LAYEB"/>
+    </EX:etu>
+    <EX:enseignement>
+        <rdf:Description rdf:about="#FARAH"/>
+    </EX:enseignement>
+    <EX:lieu>Alger</EX:lieu>
+</EX:Travaille>
+
+<EX:Travaille>
+    <EX:etu>
+        <rdf:Description rdf:about="#LAYEB"/>
+    </EX:etu>
+    <EX:enseignement>
+        <rdf:Description rdf:about="#KHADIR"/>
+    </EX:enseignement>
+    <EX:enseignement>
+        <rdf:Description rdf:about="#AZIZI"/>
+    </EX:enseignement>
+    <EX:lieu>Annaba</EX:lieu>
+</EX:Travaille>
+
+</rdf:RDF>

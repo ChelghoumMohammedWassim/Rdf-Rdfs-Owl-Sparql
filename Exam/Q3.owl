@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:j.0="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+    xml:base="http://www.owl-ontologies.com/unnamed.owl">
+
+    <owl:Class rdf:ID="Doctorant">
+        <rdfs:subClassOf rdf:resource="#Person" />
+    </owl:Class>
+
+    <owl:Class rdf:ID="Professeur">
+        <rdfs:subClassOf rdf:resource="#Person" />
+    </owl:Class>
+
+    <owl:Class rdf:ID="Livre"/>
+
+    <owl:Class rdf:ID="Personne">
+        <owl:equivalentClass>
+            <owl:unionOf rdf:parseType="Collection">
+                <owl:Class rdf:about="#Professeur" />
+                <owl:Class rdf:about="#Etudiant" />
+            </owl:unionOf>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:FunctionalProperty rdf:ID="aime">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+        <rdfs:domain rdf:resource="#Personne" />
+    </owl:FunctionalProperty>
+
+
+    <owl:Class rdf:ID="AmieDeKhadir">
+        <owl:equvalentClass>
+            <owl:Class rdf:about="#Person"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#aime"/>
+                <owl:AllValuesFrom rdf:resource="#IALivre" />
+            </owl:Restriction>
+        </owl:equvalentClass>
+    </owl:Class>
+    
+    <Livre rdf:ID="IALivre"/>
+
+    <Professeur rdf:ID="Khadir">
+        <aime>
+            <rdf:Description rdf:resource="#IALivre"></rdf:Description>
+        </aime>
+    </Professeur>
+
+
+</rdf:RDF>
